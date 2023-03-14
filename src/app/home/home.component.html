@@ -1,0 +1,29 @@
+<div class="w-full bg-gray-200 h-[8vh]">
+    <div class="flex justify-center p-2">
+        <span class="text-red-500 text-3xl rounded border-4 border-red-600 font-sans font-bold mr-[120px]">AJ</span>
+        <div class="flex gap-5 p-2" *ngFor="let m of menuList; index as i">
+            <span class="text-gray-400 text-base font-normal uppercase cursor-pointer"
+                [ngClass]="m['isSelect'] ? 'text-green-600' : '' " (click)="selectMenu(i)">{{m['name']}}</span>
+        </div>
+    </div>
+</div>
+<div class="flex justify-between">
+    <div class="pl-[490px] pt-[200px]">
+        <span class="text-9xl">Hi,</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-9xl">am</span><br><br><br>
+        <span class="text-[100px] font-bold font-sans">Jothiraj</span><br><br><br>
+        <span class="text-[40px]">Softwere Developer</span>
+    </div>
+    <div>
+        <img class="flex flex-end w-[540px] z-[9999] -mt-[98px] h-[900px]" src="../assets/Joe4.png">
+    </div>
+</div>
+
+<div class="flex justify-center">
+    <div class="bg-blue-200 text-white border w-[800px] h-[600px] p-8">
+        <span class="text-red-500 text-3xl rounded border-4 border-red-600 font-sans font-bold mr-[120px] ">AJ</span>
+        <p class="text-center text-xl p-8">I am Jothiraj.D, an full_stack developer. I am passionate about developing
+            elegant websites.
+            I am young into my career, constantly learning and hoping to share.</p>
+        <button mat-stroked-button color="accent">Download CV</button>
+    </div>
+</div>
