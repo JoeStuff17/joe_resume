@@ -1,6 +1,6 @@
 <!-- header content -->
-<div class="bg-image bg-fixed bg-left h-[1100px]" >
-  <div class="bg-blue-500/10 backdrop-brightness-75 h-[1100px]" >
+<div class="bg-image bg-fixed bg-left h-[1100px]">
+  <div class="bg-gray-500/40 backdrop-brightness-75 h-[1100px]">
     <div class="w-full bg-gray-300 shadow-sm fixed top-0 ">
       <div class="flex justify-center gap-4 p-4">
         <div
@@ -17,43 +17,106 @@
     <div class="flex justify-center pt-[28em] ">
       <div class="flex flex-col text-white">
         <span class="text-7xl font-bold header-font">I<span class="text-7xl text-green-500">'</span>M</span>
-        <span class="text-[85px] font-extrabold font-sans header-font pt-8">{{profile.name}}<span
-            class="text-7xl text-green-500">.</span></span>
+        <p class="text-[85px] font-extrabold font-sans header-font pt-8" id="name">{{profile.name}}<span
+            class="text-7xl text-green-500">.</span></p>
         <span class="text-[30px] pt-12 tracking-widest uppercase">{{profile.profession}}</span>
       </div>
     </div>
 
     <div class="flex justify-center items-center mt-[10em] z-20">
       <div class="bg-[#333B4F] flex justify-center flex-col items-center text-white w-[810px] h-[650px] p-8">
-        <div class="text-green-500 text-5xl rounded-full border-r-[3px] border-green-500 font-sans font-bold py-6 px-9 mt-[1em]">
+        <div
+          class="text-green-500 text-5xl rounded-full border-r-[3px] border-green-500 font-sans font-bold py-6 px-9 mt-[1em]">
           J</div>
-        <p class="text-center text-md font-thin tracking-wide p-20 leading-10">{{profile.objective}}</p>
-        <div class="flex p-5 rounded border bottom-0 border-green-500 uppercase text-md font-thin tracking-wider">Download
+        <p class="text-center text-md font-thin tracking-wide px-20 py-14 leading-10">{{profile.objective}}</p>
+        <div class="flex p-5 rounded border border-green-500 uppercase text-md font-thin tracking-wider">
+          Download
           My Resume</div>
       </div>
     </div>
   </div>
 </div>
-<div class="bg-image1 bg-fixed h-max z-10" >
-    <div class="flex flex-col justify-center pt-[42em] bg-gray-500/40 backdrop-brightness-75 pb-[10em]">
-      <span class="text-gray-100 tracking-widest text-2xl text-center flex justify-center pb-[3em]">MY SKILLS IN SOFTWARE</span>
-      <div *ngFor="let skill of profile.skills" class="pt-[2em] flex justify-center">
-        <div class="w-[45%] text-gray-300 flex items-center">
-          <div class="w-[16%] min-w-max uppercase">{{skill.skill}}</div>
-          <div class="w-[28%] custom-progress-bar-container flex items-center gap-1">
-            <div class="w-[25%] custom-progress-bar-fill rounded" [style.width.%]="skill.knowledge"></div>
-            <div class="w-[3%] ml-1">{{skill.knowledge}}%</div>
+<div class="bg-image1 bg-fixed h-max z-10">
+  <div class="flex flex-col justify-center pt-[42em] bg-gray-500/50 backdrop-brightness-75 pb-[10em]">
+    <span
+      class="text-gray-100 header-font font-bold text-5xl text-center flex justify-center py-5 uppercase">professional</span>
+    <span class="text-gray-100 tracking-widest text-2xl text-center flex justify-center pb-[3em]">MY SKILLS IN
+      SOFTWARE</span>
+      <div #skill>
+        <div *ngFor="let skill of profile.skills, index as i" class="pt-[2em] flex justify-center">
+          <div class="w-[45%] text-gray-300 flex items-center">
+            <div class="w-[16%] min-w-max uppercase">{{skill.skill}}</div>
+            <div class="w-[28%] custom-progress-bar-container flex items-center gap-1">
+              <div class="custom-progress-bar-fill rounded" id="bar{{i}}" [style.width.%]="skill.knowledge"></div>
+              <div class="w-[3%] ml-1">{{skill.knowledge}}%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="bg-image2 bg-fixed h-max ">
+  <div class="bg-gray-500/40 backdrop-brightness-75 pt-[12em]">
+    <span
+      class="text-gray-100 header-font font-bold text-5xl text-center flex justify-center py-5 uppercase">portfolio</span>
+    <div class="flex justify-center text-white text-2xl tracking-wider pb-[3em]">CHECK OUT MY LATEST PROJECTS</div>
+    <div class="flex justify-center w-full gap-10 py-8">
+      <div *ngFor="let p of profile.projects">
+        <img class="rounded-lg w-[24vw] hover:scale-110 transition duration-1000 ease-in-out cursor-pointer"
+          (click)="openProject(p.url)" src="{{p.image}}" alt="{{p.name}}">
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-gray-500/40 backdrop-brightness-75 pt-[40em] h-[1850px] flex flex-col justify-center">
+    <span class="text-gray-100 header-font font-bold text-5xl text-center flex justify-center py-5 uppercase">Experience</span>
+    <div class="flex justify-center text-white text-2xl tracking-wider pb-[3em]">My Journey</div>
+    <div class="py-3 sm:max-w-3xl sm:mx-auto w-full px-2 sm:px-0">
+      <div class="relative text-gray-700 antialiased text-sm font-semibold">
+        <!-- Vertical bar running through middle -->
+        <div class="block w-1 bg-green-500 absolute h-full left-1/2 transform -translate-x-1/2"></div>
+        <!-- Left section, set by justify-start and sm:pr-8 -->
+        <div *ngFor="let j of profile.journey;index as i" class="mt-6 sm:mt-0 sm:mb-12">
+          <div class="flex flex-col sm:flex-row items-center">
+            <div class="flex justify-start w-full mx-auto items-center" [ngClass]="i%2 === 0 ? 'justify-start' : 'justify-end'">
+              <div class="flex flex-col w-full sm:w-1/2" [ngClass]="i%2 === 0 ? 'sm:pr-8 text-right' : 'sm:pl-8 text-left'">
+                <span [ngClass]="i%2 === 0 ? 'text-right' : 'text-left'" class="text-[16px] text-green-500">{{j.year}}</span>
+                <div class="rounded-full bg-green-500 border-gray-500/5 border-2 w-4 h-4 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2"></div>
+                <span class="text-xl uppercase tracking-wider text-white mt-2">{{j.title}}</span>
+                <span class="text-sm font-medium text-white mt-6">{{j.role}}</span>
+                <p class="text-sm text-gray-300">{{j.description}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-</div>
-<div class="bg-image2 bg-fixed h-max ">
-  <div class="bg-gray-500/40 backdrop-brightness-75 pt-[20em]">
-    <div class="flex justify-center text-white text-2xl tracking-wider">CHECK OUT MY LATEST PROJECTS</div>
-    <div class="flex justify-center w-full gap-10 py-8">
-      <div *ngFor="let p of profile.projects">
-        <img class="rounded-lg w-[24vw] hover:scale-110 transition duration-1000 ease-in-out" src="{{p.image}}" alt="{{p.name}}" >
+    <!-- contact -->
+    <div class="flex justify-center items-center mt-[1em] z-20">
+      <div class="bg-[#333B4F] grid grid-cols-7 space-x-10 items-center text-white w-[810px] h-[550px] p-[120px]">
+        <div class="col-span-3 h-full flex flex-col justify-between px-2 py-4">
+          <span class="uppercase tracking-wider text-2xl">contact</span>
+          <span> Have a question, project inquiry, or just want to say hello? I'd love to hear from you! Feel free to reach out using the form here or connect with me via email. Looking forward to chatting with you!.</span>
+          <div>
+            <span><i class="icofont-envelope"></i>jothiraj281@gmail.com</span><br>
+            <span class="pt-1"><i class="icofont-phone"></i>+91 9962675336</span>
+          </div>
+        </div>
+        <div class="col-span-4">
+          <div class="flex gap-2 my-2">
+            <input class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500" type="text"
+              placeholder="Name" formControlName="name">
+            <input class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500" type="text"
+              placeholder="Mobile" formControlName="mobile">
+          </div>
+          <div class="space-y-2">
+            <input class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500" type="text"
+            placeholder="Email" formControlName="email">
+          <textarea id="desc" class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
+            name="desc" rows="5" cols="50" maxlength="500" formControlName="message" placeholder="Message"></textarea>
+          </div>
+            <button class="flex w-full justify-center py-2 px-5 bg-green-400 hover:bg-green-500 font-medium text-white rounded" (click)="sendMessage()">Send</button>
+        </div>
       </div>
     </div>
   </div>

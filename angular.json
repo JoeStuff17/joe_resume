@@ -30,6 +30,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/icofont/icofont.min.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
