@@ -12,6 +12,16 @@
   background-size: cover;
 }
 
+.bg-experience{
+  background-image: url(../../assets/experience-bg.png);
+  background-size: cover;
+}
+
+.bg-contact{
+  background-image: url(../../assets/contact-bg.png);
+  background-size: cover;
+}
+
 .custom-progress-bar-container {
   width: 100%;
   height: 10px;
@@ -24,29 +34,29 @@
   background-color: #2cf357;
 }
 
-#name{
+#profession{
   // transition: 1s;
 }
 .opacity1{
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid rgb(255, 255, 255); /* The typwriter cursor */
+  // border-right: .1em solid rgb(255, 255, 255); /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  margin: 5 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; /* Adjust as needed */
   animation:
-    typing 2s steps(50, end),
+    typing 3s steps(36, end),
     blink-caret .8s step-end infinite;
 }
 
 .typewriter h1 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid rgb(255, 255, 255); /* The typwriter cursor */
+  // border-right: .25em solid rgb(255, 255, 255); /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  margin: 2 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; /* Adjust as needed */
   animation:
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
+    typing 4s steps(35, end),
+    blink-caret .9s step-end infinite;
 }
 
 /* The typing effect */
@@ -70,20 +80,44 @@
   transform: scaleX(0%);
   transition: 1s;
   transform-origin: left;
-
 }
+
 #bar2{
   transform: scaleX(0%);
   transition: 1s;
   transform-origin: left;
-
 }
+
 #bar3{
   transform: scaleX(0%);
   transition: 1s;
   transform-origin: left;
-
 }
+
+#bar4{
+  transform: scaleX(0%);
+  transition: 1s;
+  transform-origin: left;
+}
+
+#bar5{
+  transform: scaleX(0%);
+  transition: 1s;
+  transform-origin: left;
+}
+
+#bar6{
+  transform: scaleX(0%);
+  transition: 1s;
+  transform-origin: left;
+}
+
+#bar7{
+  transform: scaleX(0%);
+  transition: 1s;
+  transform-origin: left;
+}
+
 .scale {
   transform: scaleX(100%) !important;
 }

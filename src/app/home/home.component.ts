@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   profile: any = {
     name: 'Jothiraj', profession: 'full stack developer', objective: "Hi, I'm Jothiraj, a highly creative and detail-oriented web and graphic designer with over 5 years of experience in the industry. I specialize in creating engaging and user-friendly designs that are both aesthetically pleasing and functional. I am proficient in a wide range of software and programming languages, including Adobe Creative Suite, HTML/CSS, and Python. I have a passion for creating beautiful designs that help businesses grow and succeed. Thank you for visiting my portfolio website!",
     skills: [{ skill: 'Angular 14', knowledge: 89 }, { skill: 'Type Script', knowledge: 80 }, { skill: 'Java Script', knowledge: 65 }, { skill: 'Tailwind Css', knowledge: 93 }, { skill: 'HTML', knowledge: 100 }, { skill: 'Nest Js', knowledge: 81 }, { skill: 'My SQL', knowledge: 75 }, { skill: 'Mongo', knowledge: 80 }],
-    contact: [{ name: 'linkedIn', logo: 'icofont-linkedin ', url: 'https://www.linkedin.com/in/jothi-raj-d/' }, { name: 'whatsapp', logo: 'icofont-brand-whatsapp', url: '' }, { name: 'instagram', logo: 'icofont-instagram', url: 'https://www.instagram.com/_me_joe/' }, { name: 'twitter', logo: 'icofont-x', url: 'https://twitter.com/Joeaskinas' }, { name: 'facebook', logo: 'icofont-facebook', url: 'https://www.facebook.com/jothiraj17' }],
+    contact: [{ name: 'linkedIn', logo: 'fa-brands fa-linkedin', url: 'https://www.linkedin.com/in/jothi-raj-d/' }, { name: 'whatsapp', logo: 'fa-brands fa-whatsapp', url: '' }, { name: 'instagram', logo: 'fa-brands fa-instagram', url: 'https://www.instagram.com/_me_joe/' }, { name: 'twitter', logo: 'fa-brands fa-x-twitter', url: 'https://twitter.com/Joeaskinas' }, { name: 'facebook', logo: 'fa-brands fa-square-facebook', url: 'https://www.facebook.com/jothiraj17' }],
     projects: [{ title: 'linkedIn static page', image: '../../assets/linkedIn.webp', description: '', url: 'https://linkedin-joe-static.web.app', tools: [{ name: 'Angular 14' }, { name: 'Tailwind css' }] }, { title: 'Real Estate website', image: '../../assets/real_estate_project.webp', description: '', url: 'https://aj-real-estate.web.app', tools: [{ name: 'React Js' }, { name: 'Tailwind css' }] }],
     journey: [
       { title: 'BCA',
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       },
       { title: 'ReadyAssist',
         year: '2022-2023',
-        role: 'Associate Software Engineer',
+        role: 'Intern (Software Engineer)',
         description: 'I have practical experience gained through a 6-month internship at ReadyAssist, where I worked from November 2022 to May 2023. This internship allowed me to apply and enhance my skills in a real-world professional setting, contributing to my overall professional growth.'
       },
       { title: 'ReadyAssist',
@@ -49,15 +49,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      let data = document.getElementById('name');
+      let data = document.getElementById('profession');
       if (data) {
         data.classList.add('opacity1')
       }
-    }, 300);
+    }, 400);
 
     document.addEventListener("scroll", (event) => {
       if (window.innerHeight > this.getDivPosition(this.skill.nativeElement).top) {
-        for (let i = 0; i < this.profile.skills.length - 1; i++) {
+        for (let i = 0; i < this.profile.skills.length; i++) {
           let barAnime = document.getElementById('bar' + i);
           if (barAnime) {
             barAnime.classList.add('scale')
