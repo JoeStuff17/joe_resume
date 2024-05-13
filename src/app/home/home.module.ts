@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     CommonModule,
     homeRouting,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class HomeModule { }

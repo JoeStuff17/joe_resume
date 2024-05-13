@@ -17,7 +17,8 @@
     <div class="grid grid-cols-7 ">
       <div class="text-3xl space-y-8 col-span-2 px-20 pt-[12.5em]">
         <div *ngFor="let c of profile.contact;index as i">
-          <i (click)="openProject(c.url)" class="cursor-pointer text-white" [class]="c.logo" [ngClass]="i === 0 ? 'hover:text-blue-500' : i === 1 ? 'hover:text-green-500' : i === 2 ? 'hover:text-pink-500' : i === 3 ? 'hover:text-black' : 'hover:text-blue-500'"></i>
+          <i (click)="openProject(c.url)" class="cursor-pointer text-white" [class]="c.logo"
+            [ngClass]="i === 0 ? 'hover:text-blue-500' : i === 1 ? 'hover:text-green-500' : i === 2 ? 'hover:text-pink-500' : i === 3 ? 'hover:text-black' : 'hover:text-blue-500'"></i>
         </div>
       </div>
       <div class="flex justify-center col-span-3 pt-[28em]">
@@ -31,21 +32,21 @@
     </div>
 
 
-    <div class="flex justify-center items-center mt-[10em] z-20">
+    <div class="flex justify-center items-center mt-[9em] z-20">
       <div class="bg-[#333B4F] flex justify-center flex-col items-center text-white w-[810px] h-[650px] p-8">
         <div
           class="text-green-500 text-5xl rounded-full border-r-[3px] border-green-500 font-sans font-bold py-6 px-9 mt-[1em]">
           J</div>
-        <p class="text-center text-md font-thin tracking-wide px-20 py-14 leading-10">{{profile.objective}}</p>
-        <div class="flex p-5 rounded border border-green-500 uppercase text-md font-thin tracking-wider">
-          Download
-          My Resume</div>
+        <p class="text-center text-md font-thin tracking-wide px-[50px] py-12 leading-10">{{profile.objective}}</p>
+        <div class="flex p-5 rounded border border-green-500 uppercase text-md font-thin tracking-wider cursor-pointer"
+          (click)="downloadResume()">
+          Download My Resume</div>
       </div>
     </div>
   </div>
 </div>
 <div class="bg-image1 bg-fixed h-max z-10">
-  <div class="flex flex-col justify-center pt-[42em] bg-gray-500/50 backdrop-brightness-75 pb-[10em]">
+  <div class="flex flex-col justify-center pt-[42em] bg-gray-500/50 pb-[10em]">
     <span
       class="text-gray-100 header-font font-bold text-5xl text-center flex justify-center py-5 uppercase">professional</span>
     <span class="text-gray-100 tracking-widest text-2xl text-center flex justify-center pb-[3em]">MY SKILLS IN
@@ -118,25 +119,28 @@
           </div>
         </div>
         <div class="col-span-4">
-          <div class="flex gap-2 my-2">
-            <input
-              class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
-              type="text" placeholder="Name" formControlName="name">
-            <input
-              class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
-              type="text" placeholder="Mobile" formControlName="mobile">
-          </div>
-          <div class="space-y-2">
-            <input
-              class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
-              type="text" placeholder="Email" formControlName="email">
-            <textarea id="desc"
-              class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
-              name="desc" rows="5" cols="50" maxlength="500" formControlName="message" placeholder="Message"></textarea>
-          </div>
-          <button
-            class="flex w-full justify-center py-2 px-5 bg-green-400 hover:bg-green-500 font-medium text-white rounded"
-            (click)="sendMessage()">Send</button>
+          <form [formGroup]="mailForm">
+            <div class="flex gap-2 my-2">
+              <input
+                class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
+                type="text" placeholder="Name" formControlName="name">
+              <input
+                class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
+                type="text" placeholder="Mobile" formControlName="mobile">
+            </div>
+            <div class="space-y-2">
+              <input
+                class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
+                type="text" placeholder="Email" formControlName="email">
+              <textarea id="desc"
+                class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
+                name="desc" rows="5" cols="50" maxlength="500" formControlName="message"
+                placeholder="Message"></textarea>
+            </div>
+            <button
+              class="flex w-full justify-center py-2 px-5 bg-green-400 hover:bg-green-500 font-medium text-white rounded"
+              (click)="sendMessage()">Send</button>
+          </form>
         </div>
       </div>
     </div>
@@ -148,12 +152,12 @@
     <div class="w-full bg-gray-700 h-[120px] py-8 flex gap-[28em] justify-center items-center">
       <div>
         <div
-        class="text-green-500 text-2xl rounded-full border-r-[3px] border-green-500 font-sans font-bold py-1 px-3 w-max">
-        J
-      </div>
+          class="text-green-500 text-2xl rounded-full border-r-[3px] border-green-500 font-sans font-bold py-1 px-3 w-max">
+          J
+        </div>
       </div>
       <div class="text-gray-400 tracking-wider font-thin"><span class="text-lg">©</span> 2024 by Jothiraj.in, Inc </div>
     </div>
-</div>
+  </div>
 
 </div>

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
+import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,9 +15,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     { id: 4, name: 'projects', isSelect: false },
     { id: 5, name: 'contact', isSelect: false }
   ];
-  objective = "Hi, I'm Jothiraj, a highly creative and detail-oriented web and graphic designer with over 5 years of experience in the industry. I specialize in creating engaging and user-friendly designs that are both aesthetically pleasing and functional. I am proficient in a wide range of software and programming languages, including Adobe Creative Suite, HTML/CSS, and Python. I have a passion for creating beautiful designs that help businesses grow and succeed. Thank you for visiting my portfolio website!";
   profile: any = {
-    name: 'Jothiraj', profession: 'full stack developer', objective: "Hi, I'm Jothiraj, a highly creative and detail-oriented web and graphic designer with over 5 years of experience in the industry. I specialize in creating engaging and user-friendly designs that are both aesthetically pleasing and functional. I am proficient in a wide range of software and programming languages, including Adobe Creative Suite, HTML/CSS, and Python. I have a passion for creating beautiful designs that help businesses grow and succeed. Thank you for visiting my portfolio website!",
+    name: 'Jothiraj', profession: 'full stack developer', objective: "Hi, I'm Jothiraj, With nearly two years of hands-on experience spanning both frontend and backend development, my career showcases a versatile skill set and a deep understanding of web technologies. Proficient in Angular 15, HTML, and Tailwind CSS, On the backend, my expertise lies in utilizing NestJS to build robust and scalable applications, complemented by adeptness in working with both MySQL and MongoDB databases. My journey in the tech industry has been defined by a commitment to delivering high-quality solutions that meet client needs and exceed expectations. Thank you for visiting my portfolio website!",
     skills: [{ skill: 'Angular 14', knowledge: 89 }, { skill: 'Type Script', knowledge: 80 }, { skill: 'Java Script', knowledge: 65 }, { skill: 'Tailwind Css', knowledge: 93 }, { skill: 'HTML', knowledge: 100 }, { skill: 'Nest Js', knowledge: 81 }, { skill: 'My SQL', knowledge: 75 }, { skill: 'Mongo', knowledge: 80 }],
     contact: [{ name: 'linkedIn', logo: 'fa-brands fa-linkedin', url: 'https://www.linkedin.com/in/jothi-raj-d/' }, { name: 'whatsapp', logo: 'fa-brands fa-whatsapp', url: 'https://api.whatsapp.com/send?phone=919962675336&text=Hello%20Jothiraj!' }, { name: 'instagram', logo: 'fa-brands fa-instagram', url: 'https://www.instagram.com/_me_joe/' }, { name: 'twitter', logo: 'fa-brands fa-x-twitter', url: 'https://twitter.com/Joeaskinas' }, { name: 'facebook', logo: 'fa-brands fa-square-facebook', url: 'https://www.facebook.com/jothiraj17' }],
     projects: [{ title: 'linkedIn static page', image: '../../assets/linkedIn.webp', description: '', url: 'https://linkedin-joe-static.web.app', tools: [{ name: 'Angular 14' }, { name: 'Tailwind css' }] }, { title: 'Real Estate website', image: '../../assets/real_estate_project.webp', description: '', url: 'https://aj-real-estate.web.app', tools: [{ name: 'React Js' }, { name: 'Tailwind css' }] }],
@@ -43,9 +43,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
       },
     ]
   }
+  mailForm: any;
 
   @ViewChild('skill', { static: false, read: ElementRef })
   skill: ElementRef<HTMLDivElement>;
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly matSnackBar: MatSnackBar,
+  ){
+    this.mailForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      mobile: ['', [Validators.required, Validators.pattern(/^(\+?\d{1,4}[\s-])?(?!0+\s+,?$)\d{10}\s*,?$/)]],
+      email: ['', Validators.required],
+      message: ['', Validators.required]
+    });
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -95,7 +107,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
     window.open(url, '_blank');
   }
 
-  sendMessage(){
-    //
+  sendMessage() {
+    if (this.mailForm.valid) {
+      window.location.href = 'mailto:jothiraj281@gmail.com?subject=' + 'I am contacting throw your website' +
+        '&body=' + `Hi, Im ${this.mailForm.get('name')?.value} ${this.mailForm.get('message')?.value} ,Please contact me on ${this.mailForm.get('mobile')?.value}`;
+        this.mailForm.reset();
+    } else {
+      this.matSnackBar.open('Please fill all the inputs with proper details', '', {
+        duration: 3000,
+        verticalPosition: 'top',
+        panelClass: 'alert'
+      });
+    }
+  }
+
+  downloadResume(){
+    window.open(`https://joestuff-bucket.s3.ap-south-1.amazonaws.com/profile/Joe_resume.pdf`, '_blank')
   }
 }
