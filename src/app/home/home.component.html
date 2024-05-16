@@ -18,7 +18,7 @@
       <div class="text-3xl space-y-8 col-span-2 px-20 pt-[12.5em]">
         <div *ngFor="let c of profile.contact;index as i">
           <i (click)="openProject(c.url)" class="cursor-pointer text-white" [class]="c.logo"
-            [ngClass]="i === 0 ? 'hover:text-blue-500' : i === 1 ? 'hover:text-green-500' : i === 2 ? 'hover:text-pink-500' : i === 3 ? 'hover:text-black' : 'hover:text-blue-500'"></i>
+            [ngClass]="i === 0 ? 'hover:text-blue-500' : i === 1 ? 'hover:text-green-500' : i === 2 ? 'hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-[#DC2743] hover:to-pink-500  hover:bg-clip-text hover:text-transparent' : i === 3 ? 'hover:text-black' : 'hover:text-blue-500'"></i>
         </div>
       </div>
       <div class="flex justify-center col-span-3 pt-[28em]">
@@ -46,7 +46,7 @@
   </div>
 </div>
 <div class="bg-image1 bg-fixed h-max z-10">
-  <div class="flex flex-col justify-center pt-[42em] bg-gray-500/50 pb-[10em]">
+  <div class="flex flex-col justify-center pt-[42em] bg-gray-500/50 pb-[10em]" id="prof">
     <span
       class="text-gray-100 header-font font-bold text-5xl text-center flex justify-center py-5 uppercase">professional</span>
     <span class="text-gray-100 tracking-widest text-2xl text-center flex justify-center pb-[3em]">MY SKILLS IN
@@ -64,8 +64,8 @@
     </div>
   </div>
 </div>
-<div class="bg-experience h-max ">
-  <div class="bg-gray-500/40 backdrop-brightness-75 pt-[12em]">
+<div class="bg-experience h-max">
+  <div class="bg-gray-500/40 backdrop-brightness-75 pt-[12em]" id="project">
     <span
       class="text-gray-100 header-font font-bold text-5xl text-center flex justify-center py-5 uppercase">portfolio</span>
     <div class="flex justify-center text-white text-2xl tracking-wider pb-[3em]">CHECK OUT MY LATEST PROJECTS</div>
@@ -84,10 +84,10 @@
     <div class="py-3 sm:max-w-3xl sm:mx-auto w-full px-2 sm:px-0">
       <div class="relative text-gray-700 antialiased text-sm font-semibold">
         <!-- Vertical bar running through middle -->
-        <div class="block w-1 bg-green-500 absolute h-full left-1/2 transform -translate-x-1/2"></div>
+        <div class="block w-1 bg-green-500 absolute h-full left-1/2 transform -translate-x-1/2" id="exp"></div>
         <!-- Left section, set by justify-start and sm:pr-8 -->
         <div *ngFor="let j of profile.journey;index as i" class="mt-6 sm:mt-0 sm:mb-12">
-          <div class="flex flex-col sm:flex-row items-center">
+          <div class="flex flex-col sm:flex-row items-center" >
             <div class="flex justify-start w-full mx-auto items-center"
               [ngClass]="i%2 === 0 ? 'justify-start' : 'justify-end'">
               <div class="flex flex-col w-full sm:w-1/2"
@@ -108,18 +108,18 @@
     </div>
     <!-- contact -->
     <div class="flex justify-center items-center mt-[1em] z-20">
-      <div class="bg-[#333B4F] grid grid-cols-7 space-x-10 items-center text-white w-[850px] h-[580px] p-[120px]">
+      <div class="bg-[#333B4F] grid grid-cols-7 space-x-10 items-center text-white w-[850px] h-[580px] p-[120px]" id="contact">
         <div class="col-span-3 h-full flex flex-col justify-between px-2 py-3">
           <span class="uppercase tracking-wider text-2xl">contact</span>
           <span> Have a question, project inquiry, or just want to say hello? <br> I'd love to hear from you! Feel free
             to reach out using the form here or connect with me via email. Looking forward to chatting with you!.</span>
           <div>
             <div class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i>jothiraj281@gmail.com</div>
-            <div class="flex items-center gap-2"><i class="fa-solid fa-phone"></i>+91 9962675336</div>
+            <div class="flex items-center gap-2" ><i class="fa-solid fa-phone"></i>+91 9962675336</div>
           </div>
         </div>
-        <div class="col-span-4">
-          <form [formGroup]="mailForm">
+        <div class="col-span-4" >
+          <form [formGroup]="mailForm" >
             <div class="flex gap-2 my-2">
               <input
                 class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
@@ -138,7 +138,7 @@
                 placeholder="Message"></textarea>
             </div>
             <button
-              class="flex w-full justify-center py-2 px-5 bg-green-400 hover:bg-green-500 font-medium text-white rounded"
+              class="flex w-full justify-center py-2 px-4 bg-green-400 hover:bg-green-500 font-medium text-white rounded"
               (click)="sendMessage()">Send</button>
           </form>
         </div>
@@ -159,5 +159,47 @@
       <div class="text-gray-400 tracking-wider font-thin"><span class="text-lg">©</span> 2024 by Jothiraj.in, Inc </div>
     </div>
   </div>
+</div>
 
+<div (click)="openChat()"
+  class="{{isChat ? '' : 'bouncing'}} cursor-pointer fixed bottom-0 right-0 m-8 w-12 h-12 flex items-center justify-center bg-white p-1 rounded-full shadow-md">
+  <i *ngIf="!isChat" class="text-[24px] text-green-500 fa-regular fa-message"></i>
+  <i *ngIf="isChat" class=" text-[24px] text-green-500 fa-solid fa-xmark"></i>
+</div>
+
+<div [@fadeInOut] *ngIf="isChat" class="flex flex-col chat-window h-full">
+  <div class="w-full bg-gray-700 rounded-t-lg">
+    <div class="flex gap-4 p-2">
+      <div class="flex justify-center items-center bg-white rounded-full">
+        <i class="text-2xl p-2 fa-solid fa-robot"></i>
+      </div>
+      <div class="flex flex-col justify-center">
+        <div class="text-lg text-white tracking-wider">Joe's Bot</div>
+        <div class="flex items-center gap-1">
+          <div class="w-2 h-2 bg-green-600 rounded-full"></div>
+          <div class="text-[12px] text-white">Online</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="messages p-3">
+      <div *ngFor="let message of messages" class="text-gray-500 my-2"
+      [ngClass]="{'user-message': message.user === 'You', 'bot-message': message.user === 'Bot'}">
+      <strong>{{message.user}}:</strong> {{message.text}}
+    </div>
+    <div *ngIf="dotLoader" class="snippet p-3" data-title="dot-pulse">
+      <div class="stage">
+        <div class="dot-pulse"></div>
+      </div>
+    </div>
+    <div *ngIf="isSuggestion" class="w-fit gap-2 flex">
+      <div class="text-[10px] px-2 rounded-3xl bg-gray-50 border border-gray-300 cursor-pointer"
+      (click)="sendText(s)" *ngFor="let s of suggestions">{{s}}</div>
+    </div>
+  </div>
+  <div class="fixed w-[300px] bottom-[7em]">
+    <input
+      class="px-4 py-2 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
+      [(ngModel)]="inputText" (keyup.enter)="sendText()" placeholder="Type your message, And hit enter..">
+  </div>
 </div>
