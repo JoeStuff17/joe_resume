@@ -153,27 +153,17 @@
 }
 
 .chat-window {
-  width: 300px;
-  height: 30em;
+  width: 360px;
+  // height: 35em;
   border-radius: 8px;
-  background: #ffff;
+  // background: #ffff;
   position: fixed;
-  bottom: 7em;
-  right: 2em;
+  bottom: 11em;
+  right: 1em;
 }
 
 .messages {
-  max-height: 300px;
-  // overflow-y: auto;
   margin-bottom: 16px;
-}
-
-.user-message {
-  text-align: right;
-}
-
-.bot-message {
-  text-align: left;
 }
 
 // dot-pulse
@@ -242,5 +232,27 @@
   }
   60%, 100% {
     box-shadow: 10014px 0 0 -5px;
+  }
+}
+
+
+.customScroll {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 1px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #bdb8b8;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #d2d1d1;
   }
 }

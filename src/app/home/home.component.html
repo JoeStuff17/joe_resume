@@ -87,7 +87,7 @@
         <div class="block w-1 bg-green-500 absolute h-full left-1/2 transform -translate-x-1/2" id="exp"></div>
         <!-- Left section, set by justify-start and sm:pr-8 -->
         <div *ngFor="let j of profile.journey;index as i" class="mt-6 sm:mt-0 sm:mb-12">
-          <div class="flex flex-col sm:flex-row items-center" >
+          <div class="flex flex-col sm:flex-row items-center">
             <div class="flex justify-start w-full mx-auto items-center"
               [ngClass]="i%2 === 0 ? 'justify-start' : 'justify-end'">
               <div class="flex flex-col w-full sm:w-1/2"
@@ -108,18 +108,19 @@
     </div>
     <!-- contact -->
     <div class="flex justify-center items-center mt-[1em] z-20">
-      <div class="bg-[#333B4F] grid grid-cols-7 space-x-10 items-center text-white w-[850px] h-[580px] p-[120px]" id="contact">
+      <div class="bg-[#333B4F] grid grid-cols-7 space-x-10 items-center text-white w-[850px] h-[580px] p-[120px]"
+        id="contact">
         <div class="col-span-3 h-full flex flex-col justify-between px-2 py-3">
           <span class="uppercase tracking-wider text-2xl">contact</span>
           <span> Have a question, project inquiry, or just want to say hello? <br> I'd love to hear from you! Feel free
             to reach out using the form here or connect with me via email. Looking forward to chatting with you!.</span>
           <div>
             <div class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i>jothiraj281@gmail.com</div>
-            <div class="flex items-center gap-2" ><i class="fa-solid fa-phone"></i>+91 9962675336</div>
+            <div class="flex items-center gap-2"><i class="fa-solid fa-phone"></i>+91 9962675336</div>
           </div>
         </div>
-        <div class="col-span-4" >
-          <form [formGroup]="mailForm" >
+        <div class="col-span-4">
+          <form [formGroup]="mailForm">
             <div class="flex gap-2 my-2">
               <input
                 class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
@@ -156,18 +157,19 @@
           J
         </div>
       </div>
-      <div class="text-gray-400 tracking-wider font-thin"><span class="text-lg">©</span> 2024 by Jothiraj.in, Inc </div>
+      <div class="text-gray-400 tracking-wider font-thin"><i class="fa-regular fa-copyright"></i> 2024 by Jothiraj.in, Inc </div>
     </div>
   </div>
 </div>
 
 <div (click)="openChat()"
-  class="{{isChat ? '' : 'bouncing'}} cursor-pointer fixed bottom-0 right-0 m-8 w-12 h-12 flex items-center justify-center bg-white p-1 rounded-full shadow-md">
+  class="{{isChat ? '' : 'bouncing'}} cursor-pointer fixed bottom-0 right-0 m-7 w-12 h-12 flex items-center justify-center bg-white p-1 rounded-full shadow-md">
   <i *ngIf="!isChat" class="text-[24px] text-green-500 fa-regular fa-message"></i>
-  <i *ngIf="isChat" class=" text-[24px] text-green-500 fa-solid fa-xmark"></i>
+  <!-- <i *ngIf="isChat" class=" text-[24px] text-green-500 fa-solid fa-xmark"></i> -->
+  <i *ngIf="isChat" class=" text-[24px] text-green-500 fa-solid fa-angle-down"></i>
 </div>
 
-<div [@fadeInOut] *ngIf="isChat" class="flex flex-col chat-window h-full">
+<div [@fadeInOut] *ngIf="isChat" class="chat-window h-[30em]">
   <div class="w-full bg-gray-700 rounded-t-lg">
     <div class="flex gap-4 p-2">
       <div class="flex justify-center items-center bg-white rounded-full">
@@ -182,24 +184,39 @@
       </div>
     </div>
   </div>
-  <div class="messages p-3">
-      <div *ngFor="let message of messages" class="text-gray-500 my-2"
-      [ngClass]="{'user-message': message.user === 'You', 'bot-message': message.user === 'Bot'}">
-      <strong>{{message.user}}:</strong> {{message.text}}
-    </div>
-    <div *ngIf="dotLoader" class="snippet p-3" data-title="dot-pulse">
-      <div class="stage">
-        <div class="dot-pulse"></div>
+
+  <div class="messages p-3 bg-white relative">
+    <div class="h-[28em] pb-[3em] overflow-auto customScroll">
+      <div *ngFor="let message of messages" class="flex text-gray-500 my-2 w-full"
+        [ngClass]="message.user === 'You' ? 'justify-end' : 'justify-start'">
+        <div>
+          <div class="p-2 px-3 rounded-lg border"
+            [ngClass]="message.user === 'You' ? 'border-blue-500 bg-blue-100' : 'border-gray-500 bg-gray-100'">
+            {{message.text}}
+          </div>
+          <div class="text-[10px]">{{message.time | date: 'hh:m a'}}</div>
+        </div>
+      </div>
+      <div *ngIf="dotLoader" class="snippet p-3" data-title="dot-pulse">
+        <div class="stage">
+          <div class="dot-pulse"></div>
+        </div>
+      </div>
+      <div *ngIf="isSuggestion" class="w-fit gap-2 flex">
+        <div class="text-[10px] px-2 rounded-3xl bg-gray-50 border border-gray-300 cursor-pointer" (click)="sendText(s)"
+          *ngFor="let s of suggestions">{{s}}</div>
       </div>
     </div>
-    <div *ngIf="isSuggestion" class="w-fit gap-2 flex">
-      <div class="text-[10px] px-2 rounded-3xl bg-gray-50 border border-gray-300 cursor-pointer"
-      (click)="sendText(s)" *ngFor="let s of suggestions">{{s}}</div>
+
+    <div class="absolute w-full bottom-1 right-0 left-0 px-1">
+      <div class="border border-gray-500 flex justify-center">
+        <input type="text"
+          class="px-4 py-2 w-full text-sm font-normal tracking-wide outline-none text-gray-600"
+          [(ngModel)]="inputText" (keyup.enter)="sendText()" placeholder="Type your message, And hit enter..">
+          <svg (click)="sendText()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-6 mt-1.5 cursor-pointer mr-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+          </svg>
+      </div>
     </div>
-  </div>
-  <div class="fixed w-[300px] bottom-[7em]">
-    <input
-      class="px-4 py-2 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
-      [(ngModel)]="inputText" (keyup.enter)="sendText()" placeholder="Type your message, And hit enter..">
   </div>
 </div>
