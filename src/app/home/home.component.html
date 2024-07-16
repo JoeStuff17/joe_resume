@@ -6,9 +6,15 @@
         <div
           class="text-green-500 text-xl rounded-full border-r-[3px] border-green-500 font-sans font-bold py-1 px-3 mr-[12em]">
           J</div>
-        <div class="flex p-2" *ngFor="let m of menuList; index as i">
+        <div class="hidden md:flex p-2" *ngFor="let m of menuList; index as i">
           <span class=" text-md font-normal uppercase cursor-pointer"
             [ngClass]="m['isSelect'] ? 'text-green-500' : 'text-gray-400' " (click)="selectMenu(i)">{{m['name']}}</span>
+        </div>
+        <div *ngIf="!sideNavEnable" (click)="sideNavEnable = true" class="block mt-2 md:hidden">
+          <i class="text-white text-[22px] fa-solid fa-bars"></i>
+        </div>
+        <div *ngIf="sideNavEnable" (click)="sideNavEnable = false" class="block mt-2 md:hidden">
+          <i class="text-white text-[24px] fa-solid fa-xmark"></i>
         </div>
       </div>
     </div>
@@ -23,9 +29,9 @@
       </div>
       <div class="flex justify-center col-span-3 pt-[28em]">
         <div class="flex flex-col text-white">
-          <span class="text-7xl font-bold header-font">I<span class="text-7xl text-green-500">'</span>M</span>
-          <p class="text-[85px] font-extrabold font-sans header-font pt-8" id="name">{{profile.name}}<span
-              class="text-7xl text-green-500">.</span></p>
+          <span class="text-2xl md:text-7xl font-bold header-font">I<span class="text-2xl md:text-7xl text-green-500">'</span>M</span>
+          <p class="text-2xl md:text-[85px] font-extrabold font-sans header-font pt-8" id="name">{{profile.name}}<span
+              class="text-2xl md:text-7xl text-green-500">.</span></p>
           <span class="text-[30px] pt-12 tracking-widest uppercase" id="profession">{{profile.profession}}</span>
         </div>
       </div>

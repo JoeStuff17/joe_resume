@@ -61,6 +61,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       },
     ]
   }
+  sideNavEnable = false;
   mailForm: any;
   isChat = false;
   messages: Array<{ user: string, text: string, time: any }> = [];
