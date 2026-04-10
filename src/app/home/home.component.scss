@@ -2,11 +2,6 @@
   letter-spacing: 15px;
 }
 
-.bg-image {
-  background-image: url(../../assets/joe-banner.webp);
-  background-size: cover;
-}
-
 .bg-image1 {
   background-image: url(../../assets/banner-4.webp);
   background-size: cover;
@@ -32,10 +27,6 @@
 .custom-progress-bar-fill {
   height: 100%;
   background-color: #2cf357;
-}
-
-#profession {
-  // transition: 1s;
 }
 
 .opacity1 {
@@ -153,13 +144,24 @@
 }
 
 .chat-window {
-  width: 360px;
-  // height: 35em;
+  width: 92vw;
+  max-width: 360px;
+  height: 70vh;
+  max-height: 30em;
   border-radius: 8px;
   // background: #ffff;
   position: fixed;
-  bottom: 11em;
-  right: 1em;
+  bottom: 6rem;
+  right: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .chat-window {
+    width: 360px;
+    height: 30em;
+    bottom: 11em;
+    right: 1em;
+  }
 }
 
 .messages {

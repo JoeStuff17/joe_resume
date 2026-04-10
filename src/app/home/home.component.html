@@ -1,5 +1,6 @@
 <!-- header content -->
-<div class="bg-image bg-fixed bg-left h-[1100px]">
+<!-- <div class="bg-image sm:bg-image2 lg:bg-image bg-fixed bg-left h-[1100px]"> -->
+<div class="userImage bg-cover bg-fixed bg-left md:h-[1100px]">
   <div class="bg-gray-500/40 backdrop-brightness-75 h-[1100px]">
     <div class="w-full bg-gray-300 shadow-sm fixed top-0 ">
       <div class="flex justify-center gap-4 p-4">
@@ -20,31 +21,39 @@
     </div>
 
     <!-- body content -->
-    <div class="grid grid-cols-7 ">
-      <div class="text-3xl space-y-8 col-span-2 px-20 pt-[12.5em]">
+    <div class="grid grid-cols-1 md:grid-cols-7 gap-8">
+      <div class="hidden md:flex text-2xl md:text-3xl flex-row md:flex-col gap-6 md:gap-8 md:col-span-2 px-6 md:px-20 pt-28 md:pt-[12.5em] justify-center">
         <div *ngFor="let c of profile.contact;index as i">
           <i (click)="openProject(c.url)" class="cursor-pointer text-white" [class]="c.logo"
             [ngClass]="i === 0 ? 'hover:text-blue-500' : i === 1 ? 'hover:text-green-500' : i === 2 ? 'hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-[#DC2743] hover:to-pink-500  hover:bg-clip-text hover:text-transparent' : i === 3 ? 'hover:text-black' : 'hover:text-blue-500'"></i>
         </div>
       </div>
-      <div class="flex justify-center col-span-3 pt-[28em]">
+      <div class="pt-36 md:hidden"></div>
+      <div class="flex justify-center md:col-span-3 pt-10 md:pt-[28em] px-6">
         <div class="flex flex-col text-white">
-          <span class="text-2xl md:text-7xl font-bold header-font">I<span class="text-2xl md:text-7xl text-green-500">'</span>M</span>
+          <span class="text-2xl md:text-7xl font-bold header-font">I<span
+              class="text-2xl md:text-7xl text-green-500">'</span>M</span>
           <p class="text-2xl md:text-[85px] font-extrabold font-sans header-font pt-8" id="name">{{profile.name}}<span
               class="text-2xl md:text-7xl text-green-500">.</span></p>
-          <span class="text-[30px] pt-12 tracking-widest uppercase" id="profession">{{profile.profession}}</span>
+          <span class="text-lg sm:text-xl md:text-[30px] pt-6 md:pt-12 tracking-widest uppercase"
+            id="profession">{{profile.profession}}</span>
         </div>
       </div>
-    </div>
+      <div class="flex text-2xl md:hidden md:text-3xl gap-[37px] px-6 pt-4 justify-center">
+        <div *ngFor="let c of profile.contact;index as i">
+          <i (click)="openProject(c.url)" class="cursor-pointer text-white" [class]="c.logo"
+            [ngClass]="i === 0 ? 'hover:text-blue-500' : i === 1 ? 'hover:text-green-500' : i === 2 ? 'hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-[#DC2743] hover:to-pink-500  hover:bg-clip-text hover:text-transparent' : i === 3 ? 'hover:text-black' : 'hover:text-blue-500'"></i>
+        </div>
+      </div>
 
 
     <div class="flex justify-center items-center mt-[9em] z-20">
-      <div class="bg-[#333B4F] flex justify-center flex-col items-center text-white w-[810px] h-[650px] p-8">
+      <div class="bg-[#333B4F] flex justify-center flex-col items-center text-white w-[92%] max-w-[810px] h-auto md:h-[650px] p-6 md:p-8">
         <div
           class="text-green-500 text-5xl rounded-full border-r-[3px] border-green-500 font-sans font-bold py-6 px-9 mt-[1em]">
           J</div>
-        <p class="text-center text-md font-thin tracking-wide px-[50px] py-12 leading-10">{{profile.objective}}</p>
-        <div class="flex p-5 rounded border border-green-500 uppercase text-md font-thin tracking-wider cursor-pointer"
+        <p class="text-center text-sm md:text-md font-thin tracking-wide px-4 md:px-[50px] py-8 md:py-12 leading-7 md:leading-10">{{profile.objective}}</p>
+        <div class="flex p-4 md:p-5 rounded border border-green-500 uppercase text-sm md:text-md font-thin tracking-wider cursor-pointer"
           (click)="downloadResume()">
           Download My Resume</div>
       </div>
@@ -52,16 +61,16 @@
   </div>
 </div>
 <div class="bg-image1 bg-fixed h-max z-10">
-  <div class="flex flex-col justify-center pt-[42em] bg-gray-500/50 pb-[10em]" id="prof">
+  <div class="flex flex-col justify-center pt-24 md:pt-[42em] bg-gray-500/50 pb-[10em]" id="prof">
     <span
-      class="text-gray-100 header-font font-bold text-5xl text-center flex justify-center py-5 uppercase">professional</span>
-    <span class="text-gray-100 tracking-widest text-2xl text-center flex justify-center pb-[3em]">MY SKILLS IN
+      class="text-gray-100 header-font font-bold text-3xl md:text-5xl text-center flex justify-center py-5 uppercase">professional</span>
+    <span class="text-gray-100 tracking-widest text-lg md:text-2xl text-center flex justify-center pb-[3em] px-6">MY SKILLS IN
       SOFTWARE</span>
     <div #skill>
       <div *ngFor="let skill of profile.skills, index as i" class="pt-[2em] flex justify-center">
-        <div class="w-[45%] text-gray-300 flex items-center">
-          <div class="w-[16%] min-w-max uppercase">{{skill.skill}}</div>
-          <div class="w-[28%] custom-progress-bar-container flex items-center gap-1">
+        <div class="w-[90%] md:w-[70%] lg:w-[45%] text-gray-300 flex flex-col md:flex-row md:items-center gap-3 md:gap-0">
+          <div class="w-full md:w-[16%] min-w-max uppercase">{{skill.skill}}</div>
+          <div class="w-full md:w-[28%] custom-progress-bar-container flex items-center gap-1">
             <div class="custom-progress-bar-fill rounded" id="bar{{i}}" [style.width.%]="skill.knowledge"></div>
             <div class="w-[3%] ml-1">{{skill.knowledge}}%</div>
           </div>
@@ -71,37 +80,39 @@
   </div>
 </div>
 <div class="bg-experience h-max">
-  <div class="bg-gray-500/40 backdrop-brightness-75 pt-[12em]" id="project">
+  <div class="bg-gray-500/40 backdrop-brightness-75 pt-24 md:pt-[12em]" id="project">
     <span
-      class="text-gray-100 header-font font-bold text-5xl text-center flex justify-center py-5 uppercase">portfolio</span>
-    <div class="flex justify-center text-white text-2xl tracking-wider pb-[3em]">CHECK OUT MY LATEST PROJECTS</div>
-    <div class="flex justify-center w-full gap-10 py-8">
+      class="text-gray-100 header-font font-bold text-3xl md:text-5xl text-center flex justify-center py-5 uppercase">portfolio</span>
+    <div class="flex justify-center text-white text-base md:text-2xl tracking-wider pb-[3em] px-6 text-center">CHECK OUT MY LATEST PROJECTS</div>
+    <div class="flex flex-wrap justify-center w-full gap-6 md:gap-10 py-8 px-6">
       <div *ngFor="let p of profile.projects">
-        <img class="rounded-lg w-[24vw] hover:scale-110 transition duration-1000 ease-in-out cursor-pointer"
+        <img class="rounded-lg w-full sm:w-[45vw] md:w-[24vw] max-w-[360px] hover:scale-105 transition duration-1000 ease-in-out cursor-pointer"
           (click)="openProject(p.url)" src="{{p.image}}" alt="{{p.name}}">
       </div>
     </div>
   </div>
 
-  <div class="bg-gray-500/40 backdrop-brightness-75 pt-[40em] h-[1850px] flex flex-col justify-center">
+  <div class="bg-gray-500/40 backdrop-brightness-75 pt-28 md:pt-[40em] h-auto md:h-[1850px] flex flex-col justify-center pb-24">
     <span
-      class="text-gray-100 header-font font-bold text-5xl text-center flex justify-center py-5 uppercase">Experience</span>
-    <div class="flex justify-center text-white text-2xl tracking-wider pb-[3em]">My Journey</div>
-    <div class="py-3 sm:max-w-3xl sm:mx-auto w-full px-2 sm:px-0">
-      <div class="relative text-gray-700 antialiased text-sm font-semibold">
+      class="text-gray-100 header-font font-bold text-3xl md:text-5xl text-center flex justify-center py-5 uppercase">Experience</span>
+    <div class="flex justify-center text-white text-base md:text-2xl tracking-wider pb-[3em]">My Journey</div>
+    <div class="py-3 sm:max-w-3xl sm:mx-auto w-full px-6 sm:px-0">
+      <div class="relative text-gray-700 antialiased text-sm font-semibold pl-6 sm:pl-0">
         <!-- Vertical bar running through middle -->
-        <div class="block w-1 bg-green-500 absolute h-full left-1/2 transform -translate-x-1/2" id="exp"></div>
+        <div class="block w-1 bg-green-500 absolute h-full left-2 -translate-x-1/2 sm:left-1/2 sm:-translate-x-1/2 z-0" id="exp"></div>
         <!-- Left section, set by justify-start and sm:pr-8 -->
         <div *ngFor="let j of profile.journey;index as i" class="mt-6 sm:mt-0 sm:mb-12">
           <div class="flex flex-col sm:flex-row items-center">
             <div class="flex justify-start w-full mx-auto items-center"
               [ngClass]="i%2 === 0 ? 'justify-start' : 'justify-end'">
               <div class="flex flex-col w-full sm:w-1/2"
-                [ngClass]="i%2 === 0 ? 'sm:pr-8 text-right' : 'sm:pl-8 text-left'">
-                <span [ngClass]="i%2 === 0 ? 'text-right' : 'text-left'"
-                  class="text-[16px] text-green-500">{{j.year}}</span>
-                <div
-                  class="rounded-full bg-green-500 border-gray-500/5 border-2 w-4 h-4 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2">
+                [ngClass]="i%2 === 0 ? 'sm:pr-8 sm:text-right text-left' : 'sm:pl-8 sm:text-left text-left'">
+                <div class="relative pl-6 sm:pl-0">
+                  <div
+                    class="rounded-full bg-green-500 border-gray-500/5 border-2 w-4 h-4 absolute left-2 -translate-x-1/2 sm:left-1/2 sm:-translate-x-1/2 top-1 z-10">
+                  </div>
+                  <span [ngClass]="i%2 === 0 ? 'sm:text-right text-left' : 'sm:text-left text-left'"
+                    class="text-[16px] text-green-500">{{j.year}}</span>
                 </div>
                 <span class="text-xl uppercase tracking-wider text-white mt-2">{{j.title}}</span>
                 <span class="text-sm font-medium text-white mt-6">{{j.role}}</span>
@@ -114,20 +125,20 @@
     </div>
     <!-- contact -->
     <div class="flex justify-center items-center mt-[1em] z-20">
-      <div class="bg-[#333B4F] grid grid-cols-7 space-x-10 items-center text-white w-[850px] h-[580px] p-[120px]"
+      <div class="bg-[#333B4F] grid grid-cols-1 md:grid-cols-7 space-x-0 md:space-x-10 gap-8 items-center text-white w-[92%] max-w-[850px] h-auto p-6 pt-[60px] md:p-[120px]"
         id="contact">
         <div class="col-span-3 h-full flex flex-col justify-between px-2 py-3">
           <span class="uppercase tracking-wider text-2xl">contact</span>
-          <span> Have a question, project inquiry, or just want to say hello? <br> I'd love to hear from you! Feel free
+          <span class="pt-5 md:pt-0"> Have a question, project inquiry, or just want to say hello? <br> I'd love to hear from you! Feel free
             to reach out using the form here or connect with me via email. Looking forward to chatting with you!.</span>
-          <div>
+          <div class="pt-5 md:pt-0">
             <div class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i>jothiraj281@gmail.com</div>
             <div class="flex items-center gap-2"><i class="fa-solid fa-phone"></i>+91 9962675336</div>
           </div>
         </div>
         <div class="col-span-4">
           <form [formGroup]="mailForm">
-            <div class="flex gap-2 my-2">
+            <div class="flex flex-col md:flex-row gap-2 my-2">
               <input
                 class="px-4 py-3 w-full text-sm font-normal tracking-wide outline-none border-2 rounded text-gray-600 hover:border-green-500"
                 type="text" placeholder="Name" formControlName="name">
@@ -156,7 +167,7 @@
 
 <div class="bg-contact bg-fixed h-max">
   <div class="bg-gray-500/40 pt-[40em]">
-    <div class="w-full bg-gray-700 h-[120px] py-8 flex gap-[28em] justify-center items-center">
+    <div class="w-full bg-gray-700 h-auto py-6 md:py-8 px-6 flex flex-col md:flex-row gap-4 md:gap-[28em] justify-center items-center">
       <div>
         <div
           class="text-green-500 text-2xl rounded-full border-r-[3px] border-green-500 font-sans font-bold py-1 px-3 w-max">
@@ -175,7 +186,7 @@
   <i *ngIf="isChat" class=" text-[24px] text-green-500 fa-solid fa-angle-down"></i>
 </div>
 
-<div [@fadeInOut] *ngIf="isChat" class="chat-window h-[30em]">
+<div [@fadeInOut] *ngIf="isChat" class="chat-window">
   <div class="w-full bg-gray-700 rounded-t-lg">
     <div class="flex gap-4 p-2">
       <div class="flex justify-center items-center bg-white rounded-full">
@@ -192,7 +203,7 @@
   </div>
 
   <div class="messages p-3 bg-white relative">
-    <div class="h-[28em] pb-[3em] overflow-auto customScroll">
+    <div class="h-[24vh] md:h-[55vh] md:pb-[3em] overflow-auto customScroll">
       <div *ngFor="let message of messages" class="flex text-gray-500 my-2 w-full"
         [ngClass]="message.user === 'You' ? 'justify-end' : 'justify-start'">
         <div>
