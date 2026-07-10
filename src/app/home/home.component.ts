@@ -37,28 +37,44 @@ export class HomeComponent implements OnInit, AfterViewInit {
     journey: [
       {
         title: 'BCA',
-        year: '2015-2018',
-        role: 'Bachelor of Computer Application',
-        description: 'I am a graduate of BCA from Patrician College of Arts and Science, where I graduated with honors in the first class. Recognized as an outstanding student, I received the Outstanding Student Award for my dedication to academic excellence and overall contributions to the college community.'
+        from: 'Patrician College of Arts & Science',
+        at: 'Chennai, Tamil Nadu, India',
+        year: '2015 - 2018',
+        role: 'Bachelor of Computer Applications (BCA)',
+        description: 'Graduated with First Class Honors and honored with the prestigious Outstanding Student Award. Recognized for maintaining high academic standards and making significant contributions to the campus community.'
       },
       {
         title: 'MCA',
-        year: '2019-2021',
-        role: 'Master of Computer Application',
-        description: 'I further pursued a Master of Computer Application (MCA) at TNOU, achieving the same distinction of graduating in the first class. These educational accomplishments reflect my strong dedication to learning and achieving excellence in the field of computer applications.'
+        from: 'Tamil Nadu Open University',
+        at: 'Chennai, Tamil Nadu, India',
+        year: '2019 - 2021',
+        role: 'Master of Computer Applications (MCA)',
+        description: 'Advanced my technical foundation by pursuing an MCA, graduating with First Class distinction. This academic milestone solidified my core expertise in advanced computer applications and software engineering principles.'
       },
       {
         title: 'ReadyAssist',
-        year: '2022-2023',
-        role: 'Intern (Software Engineer)',
-        description: 'I have practical experience gained through a 6-month internship at ReadyAssist, where I worked from November 2022 to May 2023. This internship allowed me to apply and enhance my skills in a real-world professional setting, contributing to my overall professional growth.'
-      },
-      {
-        title: 'ReadyAssist',
-        year: '2023-Till Now',
+        from: 'ReadyAssist',
+        at: 'Bangalore, Karnataka, India',
+        year: '2022 - 2023',
         role: 'Associate Software Engineer',
-        description: "I began my journey at ReadyAssist. I embraced numerous learning opportunities and gradually transitioned to backend development. Now serving as a full-stack developer, I've gained valuable insights and honed my skills in creating end-to-end solutions."
+        description: 'Completed an intensive 6-month internship (November 2022 – May 2023), bridging the gap between academic theory and industry practices. Contributed to real-world software modules and rapidly adapted to agile workflows.'
       },
+      {
+        title: 'ReadyAssist',
+        from: 'ReadyAssist',
+        at: 'Bangalore, Karnataka, India',
+        year: '2023 - 2025',
+        role: 'Software Engineer',
+        description: 'Transitioned into a full-time role, progressively taking ownership of complex backend business logic. Evolved into a versatile Full-Stack Developer, designing, developing, and delivering robust, scalable end-to-end web applications.'
+      },
+      {
+        title: 'Edvak Inc',
+        from: 'Edvak Inc',
+        at: 'Hyderabad, Telangana, India',
+        year: '2025 - Present',
+        role: 'Senior Software Engineer',
+        description: 'Leading the development of high-performance architectural solutions. Specializing in handling massive datasets, optimizing database indexing, and designing secure, robust full-stack systems that drive efficiency and scale.'
+      }
     ]
   }
   sideNavEnable = false;
@@ -149,7 +165,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   downloadResume() {
-    window.open(`https://joestuff-bucket.s3.ap-south-1.amazonaws.com/profile/Joe_resume.pdf`, '_blank')
+    // window.open(`https://joestuff-bucket.s3.ap-south-1.amazonaws.com/profile/Joe_resume.pdf`, '_blank')
+    window.open(`https://joestuff-bucket.s3.ap-south-1.amazonaws.com/profile/Jothiraj_D_Resume.pdf`, '_blank')
   }
 
   scrollToPosition(id: any) {
